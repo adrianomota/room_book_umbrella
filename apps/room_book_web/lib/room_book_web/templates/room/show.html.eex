@@ -1,0 +1,7 @@
+<h2><%= @room.name %></h2>
+
+<div><%= @room.description %></div>
+
+
+<br/>
+<%= button("Show Room List", to: "/room", method: "get", class: "btn btn-primary")%>

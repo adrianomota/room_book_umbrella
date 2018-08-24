@@ -8,4 +8,3 @@ config :room_book, RoomBook.Repo,
   hostname: "localhost",
   port: 5432,
   pool_size: 10
-

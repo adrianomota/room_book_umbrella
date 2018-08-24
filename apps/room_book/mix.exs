@@ -30,7 +30,9 @@ defmodule RoomBook.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       # {:sibling_app_in_umbrella, in_umbrella: true},
       {:ecto, "~> 2.2"},
-      {:postgrex, "~> 0.13.5"}
+      {:postgrex, "~> 0.13.5"},
+      {:comeonin, "~> 4.1"},
+      {:bcrypt_elixir, "~> 1.0"}
     ]
   end
 end

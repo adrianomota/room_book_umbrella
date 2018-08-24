@@ -2,39 +2,30 @@ defmodule RoomBookWeb.Router do
   use RoomBookWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
-    plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug(:accepts, ["html"])
+    plug(:fetch_session)
+    plug(:fetch_flash)
+    plug(:protect_from_forgery)
+    plug(:put_secure_browser_headers)
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
+    plug(:accepts, ["json"])
   end
 
   scope "/", RoomBookWeb do
-    pipe_through :browser # Use the default browser stack
+    # Use the default browser stack
+    pipe_through(:browser)
 
-    get "/", PageController, :index
+    get("/", PageController, :index)
 
-    resources "/room", RoomBookController
+    resources("/room", RoomController)
 
-    # gets
-    #get "/room", RoomBookController, :index
-    #get "/room/new", RoomBookController, :new
-    #get "/room/:id", RoomBookController, :show
-    #get "/room/:id/edit", RoomBookController, :edit
+    resources("/session", SessionController, only: [:new, :create])
 
-    #posts
-    #post "/room", RoomBookController, :create
+    delete("/sign_out", SessionController, :delete)
 
-    #puts
-    #put "/room/:id", RoomBookController, :update
-
-    #deletes
-    #delete "/room/:id", RoomBookController, :delete
-
+    resources("/registration", RegistrationController, only: [:new, :create])
   end
 
   # Other scopes may use custom stacks.

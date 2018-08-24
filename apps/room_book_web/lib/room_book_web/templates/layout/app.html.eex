@@ -8,28 +8,34 @@
     <meta name="author" content="">
 
     <title>Hello RoomBookWeb!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container">
       <header class="header">
-           <div class="navbar navbar-default navbar-fixed-top">
-                  <div class="container">
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                      <a class="navbar-brand" href="/room">RoomBook</a>
-                    </div>
-                  </div>
-           </div>
-      </header>
+            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+              <h5 class="my-0 mr-md-auto font-weight-normal">
+                <a href="/" class="navbar-brand text-dark"><strong>RoomBook</strong></a>
+              </h5>
+              <%= if RoomBookWeb.Auth.user_signed_in?(@conn) do %>
+                <nav class="my-2 my-md-0 mr-md-3">
+                  Signed in as: <strong><%= RoomBookWeb.Auth.current_user(@conn).username %></strong>
+                </nav>
+              <% end %>
 
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+              <%= link "Sign In", to: session_path(@conn, :new), class: "btn btn-outline-primary" %>
+      </div>
+      </header>
+     
+      
+      <%= unless is_nil(get_flash(@conn, :info)) do %>
+        <p class="alert alert-success" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= unless is_nil(get_flash(@conn, :error)) do %>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>

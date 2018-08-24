@@ -5,11 +5,11 @@ defmodule RoomBook.Room do
   alias RoomBook.Room
 
   schema "rooms" do
-     field :name, :string, null: false, size: 25
-     field :description, :string, size: 1000
-     field :topic, :string, size: 100
+    field(:name, :string, null: false, size: 25)
+    field(:description, :string, size: 1000)
+    field(:topic, :string, size: 100)
 
-     timestamps()
+    timestamps()
   end
 
   @doc false
