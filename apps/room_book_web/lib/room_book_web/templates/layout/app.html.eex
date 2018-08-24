@@ -19,13 +19,12 @@
               <h5 class="my-0 mr-md-auto font-weight-normal">
                 <a href="/" class="navbar-brand text-dark"><strong>RoomBook</strong></a>
               </h5>
-              <%= if RoomBookWeb.Auth.user_signed_in?(@conn) do %>
-                <nav class="my-2 my-md-0 mr-md-3">
-                  Signed in as: <strong><%= RoomBookWeb.Auth.current_user(@conn).username %></strong>
-                </nav>
-              <% end %>
-
-              <%= link "Sign In", to: session_path(@conn, :new), class: "btn btn-outline-primary" %>
+               <%= if RoomBookWeb.Auth.user_signed_in?(@conn) do %>
+                  <nav class="my-2 my-md-0 mr-md-3">
+                    Signed in as: <strong><%= RoomBookWeb.Auth.current_user(@conn).username %></strong>
+                  </nav>
+                  <%= link "Sign Out", to: session_path(@conn, :delete), method: :delete, class: "btn btn-outline-primary" %>
+               <% end %>
       </div>
       </header>
      
