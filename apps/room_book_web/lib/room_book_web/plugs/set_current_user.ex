@@ -1,7 +1,7 @@
 defmodule RoomBookWeb.Plugs.SetCurrentUser do
   import Plug.Conn
 
-  alias RoomBook.{UserQueries, User}
+  alias RoomBook.{UserQueries}
 
   def init(options) do
     options

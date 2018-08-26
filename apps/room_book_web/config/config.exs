@@ -11,20 +11,20 @@ config :room_book_web,
 
 # Configures the endpoint
 config :room_book_web, RoomBookWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "KH3GiYAF4hC5urdypNtSmohimgEnhRN+JBduozgTTA4Rd50TUExnf2hpIPYF65G0",
+  url: [scheme: "https", host: "https://roombook-app.herokuapp.com/", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: "ayXviAoqNKOF9/ZCImZEPuc/uTr1zpTcUYOexypXP7uaMXkkhaldVcymPqbOTyeG",
   render_errors: [view: RoomBookWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: RoomBookWeb.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: RoomBookWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-config :room_book_web, :generators,
-  context_app: false
+config :room_book_web, :generators, context_app: false
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
