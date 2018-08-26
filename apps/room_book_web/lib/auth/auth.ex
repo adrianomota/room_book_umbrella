@@ -30,4 +30,8 @@ defmodule RoomBookWeb.Auth do
     User.registration_changeset(%User{}, params)
     |> UserQueries.create_user()
   end
+
+  def can_manage?(user, room) do
+    user && user.id == room.user_id
+  end
 end

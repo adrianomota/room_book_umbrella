@@ -17,17 +17,21 @@
       <header class="header">
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
               <h5 class="my-0 mr-md-auto font-weight-normal">
-                <a href="/" class="navbar-brand text-dark"><strong>RoomBook</strong></a>
+                <a href="/room" class="navbar-brand text-dark"><strong>RoomBook</strong></a>
               </h5>
-               <%= if RoomBookWeb.Auth.user_signed_in?(@conn) do %>
+               <%= if @user_signed_in? do %>
                   <nav class="my-2 my-md-0 mr-md-3">
-                    Signed in as: <strong><%= RoomBookWeb.Auth.current_user(@conn).username %></strong>
+                    Hello : <strong><%= @current_user.username %></strong>
                   </nav>
-                  <%= link "Sign Out", to: session_path(@conn, :delete), method: :delete, class: "btn btn-outline-primary" %>
+                   <%= link "Sign Out", to: session_path(@conn, :delete), method: :delete, class: "btn btn-outline-primary" %>
+               <%= else %>
+                  <nav class="my-2 my-md-0 mr-md-3">
+                    Hello : <strong>Visitor</strong>
+                  </nav>
+                   <%= link "Sign In", to: "/session/new", class: "btn btn-outline-primary" %>
                <% end %>
       </div>
       </header>
-     
       
       <%= unless is_nil(get_flash(@conn, :info)) do %>
         <p class="alert alert-success" role="alert"><%= get_flash(@conn, :info) %></p>

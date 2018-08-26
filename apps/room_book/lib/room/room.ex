@@ -8,7 +8,7 @@ defmodule RoomBook.Room do
     field(:name, :string, null: false, size: 25)
     field(:description, :string, size: 1000)
     field(:topic, :string, size: 100)
-
+    belongs_to(:user, RoomBook.User)
     timestamps()
   end
 

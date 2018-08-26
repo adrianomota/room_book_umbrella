@@ -7,7 +7,9 @@
         <%= link room.name, to: room_path(@conn, :edit, room.id) %>
         <%= if !is_nil(room.description) && room.description != "" do %>
           <div class="float-right text-info" data-toggle="tooltip" data-placement="right" data-html="true" title="<%= room.description %>">
-              <%= link "Delete", to: room_path(@conn, :delete, room.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger"%>
+               <%= if @user_signed_in? do %>
+                  <%= link "Delete", to: room_path(@conn, :delete, room.id), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger"%>
+                <% end %>
           </div>
         <% end %>
       </li>
