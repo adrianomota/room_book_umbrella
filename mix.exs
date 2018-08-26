@@ -18,3 +18,4 @@ defmodule RoomBookUmbrella.MixProject do
     []
   end
 end
+
