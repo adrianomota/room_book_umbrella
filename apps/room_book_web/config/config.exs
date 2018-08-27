@@ -14,7 +14,7 @@ config :room_book_web, RoomBookWeb.Endpoint,
   url: [scheme: "https", host: "https://roombook-app.herokuapp.com/", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   render_errors: [view: RoomBookWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: RoomBookWeb.PubSub, adapter: Phoenix.PubSub.PG2]
 
