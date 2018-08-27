@@ -11,7 +11,7 @@ defmodule RoomBook.User do
     field(:password, :string, virtual: true)
     field(:password_confirmation, :string, virtual: true)
     has_many(:rooms, RoomBook.Room)
-    timestamps
+    timestamps()
   end
 
   @doc false
