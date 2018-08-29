@@ -29,14 +29,14 @@ defmodule RoomBook.UserQueries do
 
   def create_user(attrs \\ %{}) do
     %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert
+    |> User.registration_changeset(attrs)
+    |> Repo.insert()
   end
 
   def update_user(%User{} = user, attrs) do
     user
     |> User.changeset(attrs)
-    |> Repo.update
+    |> Repo.update()
   end
 
   def delete_room(%User{} = user) do

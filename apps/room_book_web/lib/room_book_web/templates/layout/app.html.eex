@@ -29,6 +29,11 @@
                     Hello : <strong>Visitor</strong>
                   </nav>
                    <%= link "Sign In", to: "/session/new", class: "btn btn-outline-primary" %>
+
+                  <nav class="my-2 my-md-0 mr-md-3">
+                  
+                  </nav>
+                    <%= link "Sign Up", to: "/registration/new", class: "btn btn-outline-primary" %>
                <% end %>
       </div>
       </header>
