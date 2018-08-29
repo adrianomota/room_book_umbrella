@@ -10,7 +10,6 @@ config :room_book_web,
  # Configures the endpoint
 config :room_book_web, RoomBookWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "KH3GiYAF4hC5urdypNtSmohimgEnhRN+JBduozgTTA4Rd50TUExnf2hpIPYF65G0",
   render_errors: [view: RoomBookWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: RoomBookWeb.PubSub,
            adapter: Phoenix.PubSub.PG2]

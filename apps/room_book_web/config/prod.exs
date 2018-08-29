@@ -15,7 +15,8 @@ use Mix.Config
 config :room_book_web, RoomBookWeb.Endpoint,
   load_from_system_env: true,
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
  # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
@@ -54,4 +55,4 @@ config :room_book_web, RoomBookWeb.Endpoint,
 #
  # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+
