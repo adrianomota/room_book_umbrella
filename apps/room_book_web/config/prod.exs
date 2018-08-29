@@ -1,6 +1,5 @@
 use Mix.Config
-
-# For production, we often load configuration from external
+ # For production, we often load configuration from external
 # sources, such as your system environment. For this reason,
 # you won't find the :http configuration below, but set inside
 # RoomBookWeb.Endpoint.init/2 when load_from_system_env is
@@ -15,12 +14,9 @@ use Mix.Config
 # which you typically run after static files are built.
 config :room_book_web, RoomBookWeb.Endpoint,
   load_from_system_env: true,
-  url: [scheme: "https", host: "https://roombook-app.herokuapp.com/", port: 443],
-  cache_static_manifest: "priv/static/cache_manifest.json",
-  force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
-
-# ## SSL Support
+  url: [host: "example.com", port: 80],
+  cache_static_manifest: "priv/static/cache_manifest.json"
+ # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
@@ -44,8 +40,7 @@ config :room_book_web, RoomBookWeb.Endpoint,
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
-
-# ## Using releases
+ # ## Using releases
 #
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
@@ -57,7 +52,6 @@ config :room_book_web, RoomBookWeb.Endpoint,
 #
 #     config :room_book_web, RoomBookWeb.Endpoint, server: true
 #
-
-# Finally import the config/prod.secret.exs
+ # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-#import_config "prod.secret.exs"
+import_config "prod.secret.exs"
